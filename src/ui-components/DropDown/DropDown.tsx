@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { useEventListener } from '../../hooks/useEventListener/useEventListener'
+import { debounce } from 'lodash'
 
 interface DropdownProps<T> {
   items: T[];
@@ -49,13 +50,13 @@ export function Dropdown<T>({ items, onSelect, getTitle, renderItem, onType }: D
     }
   }
 
-  //const debouncedOnType = lodash(onType, 250)
+  const debouncedOnType = debounce((val) => onType?.(val), 1000)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
     setInputValue(val)
     setShowDropdown(true)
-    onType?.(val)
+    debouncedOnType(val)
   }
 
   const handleClick = (suggestion: T) => {

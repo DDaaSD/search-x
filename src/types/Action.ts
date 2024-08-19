@@ -1,0 +1,1 @@
+export type StatusActionType = 'IDLE' | 'LOADING' | 'SUCCESS' | 'ERROR'

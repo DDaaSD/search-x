@@ -14,5 +14,6 @@ export const Search = () => {
         items={MOCK_RESOURCES}
         renderItem={renderItem}
         getTitle={(item) => item.title}
+    //onType={}
     />
 }
