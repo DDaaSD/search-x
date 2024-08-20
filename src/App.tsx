@@ -1,11 +1,16 @@
 import React from 'react'
-import { Search } from './components/Search/Search'
+import './App.css'
+import { SearchPage } from './components/SearchPage/SearchPage'
+import { SearchProvider } from './hooks/useSearchContext/useSearchContext'
+
+
 
 export const App = () => {
   return (
     <div className="App">
-      Hello WOrld 123!
-      <Search />
+      <SearchProvider>
+        <SearchPage />
+      </SearchProvider>
     </div>
   )
 }

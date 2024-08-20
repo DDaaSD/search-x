@@ -1,19 +1,19 @@
 import { useState } from 'react'
 import { StatusActionType  } from '../../types/Action'
 
-type ReturnType<T, G> = {
-    data: T|null| unknown,
+type ReturnType<Query, Response> = {
+    data: Response | undefined,
     time: number,
     status: StatusActionType,
-    fetch: (query: G) => void
+    fetch: (query: Query) => void
 }
 
-export function useAction<T, G>(action: (query: G) => Promise<T>): ReturnType<T,G> {
-    const [data, setData] = useState<T|null>(null)
+export function useAction<Query, Response>(action: (query: Query) => Promise<Response>): ReturnType<Query,Response> {
+    const [data, setData] = useState<Response|undefined>()
     const [status, setStatus] = useState<StatusActionType>('IDLE')
     const [time, seTime] = useState(0)
 
-    const fetch = async (query: G) => {
+    const fetch = async (query: Query) => {
         setStatus('LOADING')
         seTime(0)
         const start = Date.now()

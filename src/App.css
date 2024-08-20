@@ -1,0 +1,9 @@
+body,
+span,
+input,
+select,
+textarea,
+div {
+    box-sizing: border-box;
+    font-family: Google Sans, Arial, sans-serif-medium, sans-serif;
+}
